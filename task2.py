@@ -47,10 +47,12 @@ def gui():
         return
 
     data = parse_xml(input_file)
+    output_file = os.path.join(os.getcwd(),output_file)
     save_to_excel(data, output_file)
 
 def cli(input_file, output_file):
     data = parse_xml(input_file)
+    output_file = os.path.join(os.getcwd(),output_file)
     save_to_excel(data, output_file)
 
 if __name__ == "__main__":
