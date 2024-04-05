@@ -4,6 +4,7 @@ import logging
 import tkinter as tk
 from tkinter import filedialog
 import argparse
+import os
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s',
