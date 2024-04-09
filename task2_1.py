@@ -29,29 +29,29 @@ def parse_xml(input_file):
     return pd.DataFrame(data)
     
 def process_string(input_str):
-	logging.info("String processing started")
-	capitalize_next = True
-	processed_output = ''
+    logging.info("String processing started")
+    capitalize_next = True
+    processed_output = ''
 
-	for char in self.str:
-	    if char != ' ': 
-		if capitalize_next:
-		    processed_output += char.upper()
-		else:
-		    processed_output += char.lower()
-		capitalize_next = not capitalize_next
-	    else:
-		processed_output += char
+    for char in input_str:
+        if char != ' ': 
+            if capitalize_next:
+                processed_output += char.upper()
+            else:
+                processed_output += char.lower()
+            capitalize_next = not capitalize_next
+        else:
+            processed_output += char
 
-	logging.info(f"Processing completed: {processed_output}")
-	return processed_output
+    logging.info(f"Processing completed: {processed_output}")
+    return processed_output
 
-def save_data(data, output_file, string)
+def save_data(data, output_file, str):
     data.to_excel(output_file, index=False)
     logging.info("Excel file saved successfully")
     # with open("output.docx", "w") as writer:
     #         writer.write(output_str)
-    print("The modified string is: ",string)    
+    print("The modified string is: ",str)    
     logging.info("String displayed successfully")
 
 def save_to_excel(data, output_file):
@@ -75,20 +75,21 @@ def gui():
     data = parse_xml(input_file)
     save_to_excel(data, output_file)
 
-def cli(input_file, output_file):
+def cli(input_str, input_file, output_file):
     data = parse_xml(input_file)
-    string = process_string(input_str)
-    save_data(data, output_file, string)
+    str = process_string(input_str)
+    save_data(data, output_file, str)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', '-i')
+    parser.add_argument('--str_input','-i1')
+    parser.add_argument('--file_input','-i2')
     parser.add_argument('--output', '-o')
     args = parser.parse_args()
 
-    if args.input and args.output:
+    if args.str_input and args.file_input and args.output :
         logging.debug("Input via command line")
-        cli(args.input, args.output)
+        cli(args.str_input, args.file_input, args.output)
     else:
         logging.debug("Input via gui")
         gui()
