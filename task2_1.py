@@ -46,12 +46,13 @@ def process_string(input_str):
 	logging.info(f"Processing completed: {processed_output}")
 	return processed_output
 
-def save_data(data, output_file, output_str):
+def save_data(data, output_file, string)
     data.to_excel(output_file, index=False)
-    with open(output_str, "w") as writer:
-            writer.write(output_str)
     logging.info("Excel file saved successfully")
-    logging.info("String file saves successfully")
+    # with open("output.docx", "w") as writer:
+    #         writer.write(output_str)
+    print("The modified string is: ",string)    
+    logging.info("String displayed successfully")
 
 def save_to_excel(data, output_file):
     data.to_excel(output_file,index = False)
@@ -77,7 +78,7 @@ def gui():
 def cli(input_file, output_file):
     data = parse_xml(input_file)
     string = process_string(input_str)
-    save_data(data, output_file)
+    save_data(data, output_file, string)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
