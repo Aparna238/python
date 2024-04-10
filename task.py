@@ -48,6 +48,6 @@ if __name__ == "__main__":
     parser.add_argument('--input', '-i')
     args = parser.parse_args()
 
-    if args.input and args.output:
+    if args.input:
         logging.debug("Input via command line")
         process_input(args.input)
